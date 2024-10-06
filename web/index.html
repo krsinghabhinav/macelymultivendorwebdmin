@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="A new Flutter project.">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="macelymultivendorwebdmin">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>macelymultivendorwebdmin</title>
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <!-- Flutter initialization script -->
+  <script src="flutter_bootstrap.js" async></script>
+
+  <!-- Firebase App (v10.14.0) -->
+  <script type="module">
+    // Import the functions you need from the Firebase SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-analytics.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore.js";
+    import { getStorage } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-storage.js";
+
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBTmD_CUNts0xOJvXGVm3VGoX5cAgyTdZo",
+      authDomain: "multivendorapp-5f78e.firebaseapp.com",
+      projectId: "multivendorapp-5f78e",
+      storageBucket: "multivendorapp-5f78e.appspot.com",
+      messagingSenderId: "647957279975",
+      appId: "1:647957279975:web:f52f41a4db4f432f075e42",
+      measurementId: "G-V82RVYTR6H"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    // Initialize Firestore and Storage
+    const db = getFirestore(app);
+    const storage = getStorage(app);
+  </script>
+
+  <!-- Main Flutter app -->
+  <script src="main.dart.js" type="application/javascript"></script>
+</body>
+</html>
