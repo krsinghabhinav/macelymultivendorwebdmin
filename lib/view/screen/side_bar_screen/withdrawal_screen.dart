@@ -9,6 +9,27 @@ class WithdrawalScreen extends StatefulWidget {
 }
 
 class _WithdrawalScreenState extends State<WithdrawalScreen> {
+  Widget _rowHeader(String text, int flex) {
+    return Expanded(
+      flex: flex,
+      child: Container(
+        height: 30,
+        decoration: BoxDecoration(
+          color: Colors.yellow.shade900,
+          border: Border.all(color: Colors.grey.shade700),
+        ),
+        child: Center(
+            child: Text(
+          text,
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
+          ),
+        )),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -16,7 +37,7 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
         children: [
           Container(
             alignment: Alignment.topLeft,
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.only(left: 10, top: 10),
             child: const Text(
               'Withdrawal',
               style: TextStyle(
@@ -27,67 +48,15 @@ class _WithdrawalScreenState extends State<WithdrawalScreen> {
           ),
           const Divider(color: Colors.grey),
           Padding(
-            padding: const EdgeInsets.only(left: 15, top: 8),
-            child: Column(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
               children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 150,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey.shade800),
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color.fromARGB(255, 165, 162, 162),
-                      ),
-                      child: const Center(child: Text("Withdrawal")),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: SizedBox(
-                        width: 80,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.yellow.shade700,
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          child: const Text("Save"),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5, top: 5),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Center(
-                            child: SizedBox(
-                              width: 140,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.yellow.shade700,
-                                  foregroundColor: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                                child: const Text("Upload Image"),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )
+                _rowHeader('NAME', 2),
+                _rowHeader('AMOUNT', 1),
+                _rowHeader('BANK NAME', 3),
+                _rowHeader('BANK ACCOUNT', 2),
+                _rowHeader('EMAIL', 3),
+                _rowHeader('PHONE NO', 2),
               ],
             ),
           )

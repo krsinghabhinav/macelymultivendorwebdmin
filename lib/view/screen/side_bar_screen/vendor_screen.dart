@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:macelymultivendorwebdmin/view/screen/side_bar_screen/widget/vendor_widgets.dart';
 
 class VendorScreen extends StatefulWidget {
   static const String routeName = '\VendorScreen';
@@ -9,6 +10,26 @@ class VendorScreen extends StatefulWidget {
 }
 
 class _VendorScreenState extends State<VendorScreen> {
+  Widget _rowHeader(String text, int flex) {
+    return Expanded(
+      flex: flex,
+      child: Container(
+        height: 30,
+        decoration: BoxDecoration(
+          color: Colors.yellow.shade900,
+          border: Border.all(color: Colors.grey.shade700),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 16,
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -16,81 +37,33 @@ class _VendorScreenState extends State<VendorScreen> {
         children: [
           Container(
             alignment: Alignment.topLeft,
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.only(left: 10, top: 10),
             child: const Text(
-              'Vendor',
+              'Manage Vendor',
               style: TextStyle(
                 fontWeight: FontWeight.w700,
-                fontSize: 22,
+                fontSize: 24,
               ),
             ),
           ),
           const Divider(color: Colors.grey),
           Padding(
-            padding: const EdgeInsets.only(left: 15, top: 8),
-            child: Column(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
               children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 150,
-                      width: 150,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey.shade800),
-                        borderRadius: BorderRadius.circular(10),
-                        color: const Color.fromARGB(255, 165, 162, 162),
-                      ),
-                      child: const Center(child: Text("Vendor")),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 10),
-                      child: SizedBox(
-                        width: 80,
-                        child: ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.yellow.shade700,
-                            foregroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                          child: const Text("Save"),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 5, top: 5),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Center(
-                            child: SizedBox(
-                              width: 140,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.yellow.shade700,
-                                  foregroundColor: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                ),
-                                child: const Text("Upload Image"),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                )
+                _rowHeader('LOGO', 1),
+                _rowHeader('BUSSINESS NAME', 3),
+                _rowHeader('CITY', 2),
+                _rowHeader('STATE', 2),
+                _rowHeader('ACTION', 1),
+                _rowHeader('VIEW MORE', 1),
               ],
             ),
-          )
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: VendorWidgets(),
+          ),
         ],
       ),
     );

@@ -5,6 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:macelymultivendorwebdmin/view/screen/side_bar_screen/widget/uploadBanner_widgets.dart';
 
 class UploadBannerScreen extends StatefulWidget {
   static const String routeName = '\UploadedScreen';
@@ -37,9 +38,7 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
   // Function to upload the banner to Firebase Storage
   Future<String> _uploadBannerToStore(dynamic image) async {
     Reference ref = _storage.ref().child("Banners").child(fileName!);
-
     UploadTask uploadTask = ref.putData(image); // For web, use bytes
-
     TaskSnapshot snapshot = await uploadTask;
     String downloadUrl = await snapshot.ref.getDownloadURL();
     return downloadUrl;
@@ -49,22 +48,21 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
   uploadToFireStore() async {
     try {
       // Show loading indicator
-      EasyLoading.show();
+      EasyLoading.show(status: 'Uploading...');
 
       // Check if image is selected
       if (_image != null) {
         // Upload the image and get the URL
         String imageUrl = await _uploadBannerToStore(_image);
-
         // Upload the image URL to Firestore
         await _firestore.collection("banners").doc(fileName).set({
           "image": imageUrl,
         }).whenComplete(() {
           EasyLoading.dismiss();
 
-          // setState(() {
-          //   _image = null;
-          // });
+          setState(() {
+            _image = null;
+          });
         });
 
         // Show success message
@@ -176,7 +174,19 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
                 )
               ],
             ),
-          )
+          ),
+          const Divider(color: Colors.grey),
+          Container(
+            alignment: Alignment.topLeft,
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                "Banners",
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+          UploadbannerWidgets(),
         ],
       ),
     );
