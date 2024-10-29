@@ -9,6 +9,7 @@ class VendorUserModel {
   final String? stateValue;
   final String? taxNumber;
   final String? taxRegister;
+  final String? vendorId;
 
   // Named parameters constructor
   VendorUserModel({
@@ -22,6 +23,7 @@ class VendorUserModel {
     required this.stateValue,
     required this.taxNumber,
     required this.taxRegister,
+    required this.vendorId,
   });
 
   // fromJson constructor
@@ -35,7 +37,8 @@ class VendorUserModel {
         phoneNumber = json['phoneNumber'] as String?,
         stateValue = json['stateValue'] as String?,
         taxNumber = json['taxNumber'] as String?,
-        taxRegister = json['taxRegister'] as String?;
+        taxRegister = json['taxRegister'] as String?,
+        vendorId = json['vendorId'] as String?;
 
   // toJson method (optional) for converting model to JSON
   Map<String, dynamic> toJson() {
@@ -50,6 +53,7 @@ class VendorUserModel {
       'stateValue': stateValue,
       'taxNumber': taxNumber,
       'taxRegister': taxRegister,
+      'vendorId': vendorId,
     };
   }
 }

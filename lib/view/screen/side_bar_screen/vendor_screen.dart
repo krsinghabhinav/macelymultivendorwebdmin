@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:macelymultivendorwebdmin/view/screen/side_bar_screen/widget/vendor_widgets.dart';
+
+import 'widget/vendor_widget_with_model.dart';
 
 class VendorScreen extends StatefulWidget {
   static const String routeName = '\VendorScreen';
@@ -14,6 +15,7 @@ class _VendorScreenState extends State<VendorScreen> {
     return Expanded(
       flex: flex,
       child: Container(
+        margin: EdgeInsets.all(2),
         height: 30,
         decoration: BoxDecoration(
           color: Colors.yellow.shade900,
